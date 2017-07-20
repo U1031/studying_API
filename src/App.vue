@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <button v-on:click="searchTerm">Refresh</button>
-    <!--<div v-if='user_data.length != 0'>-->
+    <div v-if='user_data.length != 0'>
       <Profile v-bind:profile_img='user_data[0].picture.large'></Profile>
       <ContentIcon v-bind:content_data='user_data[0]'></ContentIcon>
-    <!--</div>-->
+    </div>
   </div>
 </template>
 
@@ -14,12 +14,12 @@ import ContentIcon from './components/ContentIcon';
 
 export default {
   name: 'app',
-  data: function () {
+  data() {
     return {
       user_data: []
     }
   },
-  created: function () {
+  created() {
     const baseURI = 'https://randomuser.me/api/';
     this.$http.get(`${baseURI}`)
       .then((result) => {

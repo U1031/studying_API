@@ -3,10 +3,9 @@
         <div>
             {{explain[selectedKey]}}
             <br> {{mapping}}
-            <span></span>
         </div>
         <div>
-            <span v-for='key in keys' v-bind:key="key" v-on:mouseover='handleMouseOver(key)'>
+            <span v-for='key in keys' v-on:mouseover='handleMouseOver(key)'>
                 <img :src='key.icon'>
             </span>
         </div>
