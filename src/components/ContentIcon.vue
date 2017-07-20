@@ -1,13 +1,21 @@
 <template>
     <div class='content-icon'>
-        <span v-for='key in keys'>
-            <img :src='key.icon'>
-        </span>
+        <div>
+            {{explain[selectedKey]}}
+            <br> {{mapping}}
+            <span></span>
+        </div>
+        <div>
+            <span v-for='key in keys' v-bind:key="key" v-on:mouseover='handleMouseOver(key)'>
+                <img :src='key.icon'>
+            </span>
+        </div>
     </div>
 </template>
 <script>
 export default {
     name: 'content-icon',
+    props: ['content_data'],
     data: function () {
         return {
             keys: [{
@@ -28,14 +36,49 @@ export default {
             }, {
                 name: 'password',
                 icon: 'http://icooon-mono.com/i/icon_00014/icon_000141_64.png'
-            },]
+            },],
+            explain: {
+                name: 'Hi, My name is',
+                email: 'My email address is',
+                birthday: 'My birthday is',
+                address: 'My address is',
+                phone_number: 'My phone number is',
+                password: 'My password is'
+            },
+            selectedKey: 'name',
+            mapping: this.content_data.name.first + ' ' + this.content_data.name.last
+        }
+    },
+    methods: {
+        handleMouseOver: function (key) {
+            this.selectedKey = key.name
+            switch (this.selectedKey) {
+                case 'name':
+                    return this.mapping = this.content_data.name.first + ' ' + this.content_data.name.last
+
+                case 'email':
+                    return this.mapping = this.content_data.email
+
+                case 'birthday':
+                    return this.mapping = this.content_data.dob
+
+                case 'address':
+                    return this.mapping = this.content_data.location.postcode + ' ' + this.content_data.location.state + ' ' + this.content_data.location.city
+
+                case 'phone_number':
+                    return this.mapping = this.content_data.phone
+
+                case 'password':
+                    return this.mapping = this.content_data.login.password
+
+            }
         }
     }
 }
 </script>
 
 <style>
-.content-icon img{
+.content-icon img {
     width: 8%;
     height: 8%;
 }

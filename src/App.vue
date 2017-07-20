@@ -1,12 +1,10 @@
 <template>
   <div id="app">
     <button v-on:click="searchTerm">Refresh</button>
-    <div v-if='user_data.length != 0'>
-      {{user_data[0].name}}
+    <!--<div v-if='user_data.length != 0'>-->
       <Profile v-bind:profile_img='user_data[0].picture.large'></Profile>
-      <ContentIcon></ContentIcon>
-    </div>
-    <!--<profile v-bind:user_img=''></profile>-->
+      <ContentIcon v-bind:content_data='user_data[0]'></ContentIcon>
+    <!--</div>-->
   </div>
 </template>
 
@@ -18,18 +16,26 @@ export default {
   name: 'app',
   data: function () {
     return {
-      user_data:[]
+      user_data: []
     }
+  },
+  created: function () {
+    const baseURI = 'https://randomuser.me/api/';
+    this.$http.get(`${baseURI}`)
+      .then((result) => {
+        console.log(result.data.results)
+        this.user_data = result.data.results
+      })
   },
   methods: {
     searchTerm: function () {
       // using JSONPlaceholder
       const baseURI = 'https://randomuser.me/api/';
       this.$http.get(`${baseURI}`)
-      .then((result) => {
-        console.log(result.data.results)
-        this.user_data = result.data.results
-      })
+        .then((result) => {
+          console.log(result.data.results)
+          this.user_data = result.data.results
+        })
     }
   },
   components: {
@@ -48,7 +54,8 @@ export default {
   max-width: 560px;
   text-align: center;
 }
-#app button{
+
+#app button {
 
   text-align: right;
 }
