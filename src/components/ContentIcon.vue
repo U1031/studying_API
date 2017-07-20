@@ -1,8 +1,8 @@
 <template>
     <div class='content-icon'>
-        <div>
-            {{explain[selectedKey]}}
-            <br> {{mapping}}
+        <div class='explain'>
+           <span> {{explain[selectedKey]}}
+            <br> {{mapping}}</span>
         </div>
         <div>
             <span v-for='key in keys' v-on:mouseover='handleMouseOver(key)'>
@@ -80,6 +80,22 @@ export default {
 .content-icon img {
     width: 8%;
     height: 8%;
+    position: relative;
+    top: 80px;
+}
+.explain span{
+    position: relative;
+    top: 65px;
+}
+.content-icon{
+    margin: 0px;
+    /*background: white;*/
+    width: 100%;
+    height: 200px;
+    position: relative;
+    /*top: 45px;*/
+    background-color: none;
+    
 }
 </style>
 

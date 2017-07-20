@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <button v-on:click="searchTerm">Refresh</button>
-    <div v-if='user_data.length != 0'>
+    <!--<button v-on:click="searchTerm">Refresh</button>-->
+    <div class='total' v-if='user_data.length != 0'>
       <Profile v-bind:profile_img='user_data[0].picture.large'></Profile>
       <ContentIcon v-bind:content_data='user_data[0]'></ContentIcon>
     </div>
@@ -53,10 +53,16 @@ export default {
   color: #2c3e50;
   max-width: 560px;
   text-align: center;
+  height: 300px;
+  margin : 20px;
+  border-radius: 2%;
 }
 
-#app button {
-
-  text-align: right;
+.total {
+  border: 0.5px solid lightgray;
+  border-radius:2%;
+  background-color: lightgray; 
 }
+
+
 </style>
