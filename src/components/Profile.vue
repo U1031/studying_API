@@ -16,7 +16,8 @@ export default {
 
     height: 120px;
     background: lightslategray;
-    border-radius: 2%;
+    border-top-left-radius: 2%;
+    border-top-right-radius: 2%;
 }
 
 .profile img{

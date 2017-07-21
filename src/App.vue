@@ -61,7 +61,7 @@ export default {
 .total {
   border: 0.5px solid lightgray;
   border-radius:2%;
-  background-color: lightgray; 
+  background-color: none; 
 }
 
 

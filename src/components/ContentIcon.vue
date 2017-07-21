@@ -3,6 +3,7 @@
         <div class='explain'>
            <span> {{explain[selectedKey]}}
             <br> {{mapping}}</span>
+            
         </div>
         <div>
             <span v-for='key in keys' v-on:mouseover='handleMouseOver(key)'>
@@ -95,6 +96,7 @@ export default {
     position: relative;
     /*top: 45px;*/
     background-color: none;
+
     
 }
 </style>
