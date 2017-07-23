@@ -90,14 +90,10 @@ export default {
 }
 .content-icon{
     margin: 0px;
-    /*background: white;*/
     width: 100%;
     height: 200px;
     position: relative;
-    /*top: 45px;*/
-    background-color: none;
-
-    
+    background-color: none;    
 }
 </style>
 

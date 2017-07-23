@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <!--<button v-on:click="searchTerm">Refresh</button>-->
     <div class='total' v-if='user_data.length != 0'>
       <Profile v-bind:profile_img='user_data[0].picture.large'></Profile>
       <ContentIcon v-bind:content_data='user_data[0]'></ContentIcon>
@@ -29,7 +28,6 @@ export default {
   },
   methods: {
     searchTerm: function () {
-      // using JSONPlaceholder
       const baseURI = 'https://randomuser.me/api/';
       this.$http.get(`${baseURI}`)
         .then((result) => {
